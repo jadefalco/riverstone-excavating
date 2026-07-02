@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Riverstone Excavating | Professional Excavation in Langley & the Fraser Valley</title>
+  <meta name="description" content="Riverstone Excavating provides professional excavation, grading, underground utilities, foundation drainage, land clearing, retaining walls, and demolition in Langley and the Fraser Valley.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --charcoal: #1a1a1a;
+      --charcoal-light: #2d2d2d;
+      --steel: #4a5568;
+      --steel-light: #6b7280;
+      --warm-white: #fafafa;
+      --concrete: #f0f0f0;
+      --orange-dark: #c75a12;
+      --orange-light: #f08c4a;
+      --orange: #e87722;
+      --orange-subtle: #f5d9c5;
+      --white: #ffffff;
+      --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Navigation */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 1.25rem 0;
+      transition: all 0.4s var(--transition);
+    }
+
+    .navbar.scrolled {
+      background: rgba(26, 26, 26, 0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 0.75rem 0;
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+
+    .navbar.scrolled .nav-logo img {
+      height: 55px;
+    }
+
+    .nav-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-logo img {
+      height: 80px;
+      width: auto;
+      background: var(--white);
+      padding: 4px 10px;
+      border-radius: 2px;
+      transition: all 0.4s ease;
+    }
+
+    .nav-logo-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--white);
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+    }
+
+    .nav-logo-text span {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.8;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links > a,
+    .dropdown > a {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.3s ease;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .nav-links > a::after,
+    .dropdown > a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--orange);
+      transition: width 0.3s var(--transition);
+    }
+
+    .nav-links > a:hover,
+    .dropdown > a:hover {
+      color: var(--white);
+    }
+
+    .nav-links > a:hover::after,
+    .dropdown > a:hover::after {
+      width: 100%;
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: calc(100% + 1rem);
+      left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: rgba(26, 26, 26, 0.98);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      min-width: 240px;
+      padding: 0.75rem 0;
+      border-radius: 2px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s var(--transition);
+      border-top: 2px solid var(--orange);
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    .dropdown-menu a {
+      display: block;
+      padding: 0.7rem 1.5rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.8);
+      transition: all 0.2s ease;
+      text-transform: none;
+      letter-spacing: 0.01em;
+    }
+
+    .dropdown-menu a:hover {
+      color: var(--white);
+      background: rgba(232, 119, 34, 0.12);
+      padding-left: 1.75rem;
+    }
+
+    .dropdown-arrow {
+      width: 10px;
+      height: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .dropdown:hover .dropdown-arrow {
+      transform: rotate(180deg);
+    }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: 0.6rem 1.5rem;
+      border-radius: 2px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-cta:hover {
+      background: var(--orange-dark);
+      transform: translateY(-1px);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    .mobile-menu-btn span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--white);
+      margin: 5px 0;
+      transition: 0.3s ease;
+    }
+
+    /* Hero */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.8) saturate(1.0);
+      transform: scale(1.05);
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes heroZoom {
+      from { transform: scale(1.05); }
+      to { transform: scale(1.12); }
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(
+          90deg,
+      rgba(26,26,26,0.82) 0%,
+      rgba(26,26,26,0.68) 35%,
+      rgba(26,26,26,0.40) 60%,
+      rgba(26,26,26,0.15) 100%
+        );
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 750px;
+      margin-left: 6%;
+      margin-right: auto;
+      text-align: left;
+      padding-top: 100px;
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.75rem;
+      text-align: left;
+    }
+
+    .hero-eyebrow::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--orange);
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s 0.5s forwards;
+      max-width: 700px;
+      line-height: 1.1;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.7),
+        0 2px 8px rgba(0,0,0,0.8);
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 300;
+      line-height: 1.7;
+      max-width: 500px;
+      margin: 0 0 2.5rem;
+      opacity: 0;
+      color: rgba(255,255,255,0.85);
+      transform: translateY(30px);
+      animation: fadeUp 0.9s 0.7s forwards;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.8);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.9s 0.9s forwards;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2.25rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: all 0.3s var(--transition);
+      cursor: pointer;
+      border: none;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--orange-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 1.5px solid rgba(255,255,255,0.4);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .hero-scroll {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 3;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      animation: fadeUp 1s 1.2s forwards;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--orange), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.1); }
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Trust Bar */
+    .trust-bar {
+      background: var(--charcoal);
+      padding: 3rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .trust-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .trust-item {
+      text-align: center;
+      padding: 1.5rem;
+      border-right: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .trust-item:last-child {
+      border-right: none;
+    }
+
+    .trust-icon {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 1rem;
+      color: var(--orange);
+    }
+
+    .trust-item h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .trust-item p {
+      font-size: 0.8rem;
+      color: var(--steel-light);
+    }
+
+    /* Trust Credentials Bar */
+    .trust-credentials {
+      background: var(--concrete);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 4rem 0;
+      position: relative;
+      z-index: 10;
+    }
+
+    .trust-credentials-grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .trust-credential {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .trust-credential-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1.25rem;
+      color: var(--orange);
+    }
+
+    .trust-credential h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+
+    .trust-credential p {
+      font-size: 0.95rem;
+      color: var(--steel);
+      line-height: 1.5;
+      max-width: 260px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 1024px) {
+      .trust-credentials-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+      .trust-credential {
+        padding: 1.25rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .trust-credentials {
+        padding: 3rem 0;
+      }
+      .trust-credentials-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .trust-credential {
+        padding: 1.5rem 1rem;
+      }
+      .trust-credential-icon {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    /* Section Base */
+    .section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 4rem;
+    }
+
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+
+    .section-header h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+
+    .section-header p {
+      color: var(--steel);
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    /* About */
+    .about {
+      background: var(--white);
+      overflow: hidden;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .about-image {
+      position: relative;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .about-image::before {
+      content: 'RS';
+      position: absolute;
+      bottom: -30px;
+      right: -20px;
+      font-family: 'Playfair Display', serif;
+      font-size: 8rem;
+      font-weight: 700;
+      color: var(--orange);
+      opacity: 0.12;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .about-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-content h2 {
+      font-size: clamp(2rem, 3.5vw, 2.75rem);
+      margin-bottom: 1.5rem;
+      color: var(--charcoal);
+    }
+
+    .about-content .lead {
+      font-size: 1.15rem;
+      color: var(--steel);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-weight: 400;
+    }
+
+    .about-content p {
+      color: var(--steel);
+      margin-bottom: 1rem;
+      line-height: 1.8;
+    }
+
+    .about-stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--orange-subtle);
+    }
+
+    .about-stat h4 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      color: var(--orange);
+      margin-bottom: 0.25rem;
+    }
+
+    .about-stat p {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--steel);
+      margin: 0;
+    }
+
+    /* Why Choose */
+    .why-choose {
+      background: var(--concrete);
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      padding: 2.5rem;
+      border-radius: 2px;
+      transition: all 0.4s var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+    }
+
+    .card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .card-icon {
+      width: 44px;
+      height: 44px;
+      color: var(--orange);
+      margin-bottom: 1.5rem;
+    }
+
+    .card h3 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: var(--charcoal);
+    }
+
+    .card p {
+      font-size: 0.95rem;
+      color: var(--steel);
+      line-height: 1.7;
+    }
+
+    /* Services */
+    .services {
+      background: var(--white);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      position: relative;
+      height: 380px;
+      border-radius: 2px;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--transition);
+    }
+
+    .service-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .service-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to top,
+        rgba(26,26,26,0.9) 0%,
+        rgba(26,26,26,0.4) 50%,
+        rgba(26,26,26,0.1) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2rem;
+      transition: background 0.4s ease;
+    }
+
+    .service-card:hover .service-overlay {
+      background: linear-gradient(
+        to top,
+        rgba(26,26,26,0.95) 0%,
+        rgba(26,26,26,0.5) 60%,
+        rgba(26,26,26,0.2) 100%
+      );
+    }
+
+    .service-overlay h3 {
+      color: var(--white);
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+      font-family: 'Playfair Display', serif;
+    }
+
+    .service-overlay p {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      transform: translateY(10px);
+      opacity: 0;
+      transition: all 0.4s 0.1s var(--transition);
+    }
+
+    .service-card:hover .service-overlay p {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .service-line {
+      width: 30px;
+      height: 2px;
+      background: var(--orange);
+      margin-bottom: 1rem;
+      transition: width 0.4s var(--transition);
+    }
+
+    .service-card:hover .service-line {
+      width: 50px;
+    }
+
+    /* Featured Project */
+    .featured-project {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .featured-project .section-header h2,
+    .featured-project .section-header p {
+      color: var(--white);
+    }
+
+    .featured-project .section-header p {
+      opacity: 0.7;
+    }
+
+    .featured-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .featured-image {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+    }
+
+    .featured-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      transition: transform 0.6s var(--transition);
+    }
+
+    .featured-image:hover img {
+      transform: scale(1.03);
+    }
+
+    .featured-content h3 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    .featured-content p {
+      color: rgba(255,255,255,0.75);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+    }
+
+    .featured-list {
+      list-style: none;
+      margin-bottom: 2rem;
+    }
+
+    .featured-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      color: rgba(255,255,255,0.8);
+      font-size: 0.95rem;
+    }
+
+    .featured-list li svg {
+      width: 18px;
+      height: 18px;
+      color: var(--orange);
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* Project Gallery */
+    .project-gallery {
+      background: var(--warm-white);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 300px);
+      gap: 1rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 2px;
+      cursor: pointer;
+    }
+
+    .gallery-item:nth-child(1) {
+      grid-column: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--transition), filter 0.4s ease;
+      filter: grayscale(20%);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: grayscale(0%);
+    }
+
+    .gallery-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      transform: translateY(100%);
+      transition: transform 0.4s var(--transition);
+    }
+
+    .gallery-item:hover .gallery-caption {
+      transform: translateY(0);
+    }
+
+    .gallery-caption p {
+      color: var(--white);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: var(--white);
+    }
+
+    .featured-testimonial {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    .featured-testimonial-icon {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 2rem;
+      color: var(--orange);
+      opacity: 0.25;
+    }
+
+    .featured-testimonial-stars {
+      display: flex;
+      justify-content: center;
+      gap: 0.35rem;
+      margin-bottom: 1.75rem;
+      color: var(--orange);
+    }
+
+    .featured-testimonial-stars svg {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+    }
+
+    .featured-testimonial-text {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
+      line-height: 1.6;
+      color: var(--charcoal);
+      margin-bottom: 2.5rem;
+    }
+
+    .featured-testimonial-author h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.35rem;
+    }
+
+    .featured-testimonial-author span {
+      font-size: 0.8rem;
+      color: var(--steel-light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .testimonials-note {
+      text-align: center;
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: var(--steel-light);
+      letter-spacing: 0.01em;
+    }
+
+    /* FAQ Accordion */
+    .faq {
+      background: var(--white);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .faq-item:first-child {
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .faq-question {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      background: none;
+      border: none;
+      text-align: left;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--charcoal);
+      transition: color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      color: var(--orange-dark);
+    }
+
+    .faq-question:focus {
+      outline: none;
+    }
+
+    .faq-icon {
+      width: 20px;
+      height: 20px;
+      color: var(--orange);
+      transition: transform 0.35s ease;
+      flex-shrink: 0;
+      margin-left: 1rem;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer-wrapper {
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.4s var(--transition);
+    }
+
+    .faq-item.open .faq-answer-wrapper {
+      grid-template-rows: 1fr;
+    }
+
+    .faq-answer {
+      overflow: hidden;
+    }
+
+    .faq-answer p {
+      padding-bottom: 1.5rem;
+      color: var(--steel);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .faq-footer {
+      text-align: center;
+      max-width: 600px;
+      margin: 3rem auto 0;
+    }
+
+    .faq-footer p {
+      color: var(--steel);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
+
+    .faq-footer p:first-child {
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.75rem;
+    }
+
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1.5px solid rgba(0,0,0,0.2);
+      margin-top: 1.25rem;
+    }
+
+    .btn-outline-dark:hover {
+      background: rgba(0,0,0,0.04);
+      border-color: var(--charcoal);
+      transform: translateY(-2px);
+    }
+
+    /* CTA */
+    .cta {
+      position: relative;
+      padding: 8rem 0;
+      overflow: hidden;
+    }
+
+    .cta-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+    }
+
+    .cta-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.4) saturate(0.8);
+    }
+
+    .cta-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(26,26,26,0.85) 0%,
+        rgba(26,26,26,0.6) 100%
+      );
+      z-index: 2;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      color: var(--white);
+    }
+
+    .cta-content h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-content p {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 2rem;
+      line-height: 1.7;
+    }
+
+    .cta-phone {
+      display: block;
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      color: var(--orange);
+      margin-bottom: 2rem;
+      letter-spacing: 0.02em;
+    }
+
+    .cta-phone:hover {
+      color: var(--orange-light);
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 4rem 0 2rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1.5fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand img {
+      height: 56px;
+      width: auto;
+      background: var(--white);
+      padding: 6px 12px;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      color: var(--steel-light);
+      font-size: 0.9rem;
+      line-height: 1.7;
+      max-width: 300px;
+    }
+
+    .footer-column h4 {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-column a {
+      display: block;
+      color: var(--steel-light);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      transition: color 0.3s ease;
+    }
+
+    .footer-column a:hover {
+      color: var(--orange);
+    }
+
+    .footer-contact p {
+      color: var(--steel-light);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-contact a {
+      color: var(--steel-light);
+      transition: color 0.3s ease;
+    }
+
+    .footer-contact a:hover {
+      color: var(--orange);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .footer-bottom p {
+      font-size: 0.8rem;
+      color: var(--steel);
+    }
+
+    /* Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s var(--transition);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .about-grid,
+      .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+      .about-image::before {
+        font-size: 6rem;
+        bottom: -10px;
+        right: 10px;
+      }
+      .cards-grid,
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 250px);
+      }
+      .gallery-item:nth-child(1) {
+        grid-column: span 2;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(26,26,26,0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1rem;
+        backdrop-filter: blur(10px);
+        align-items: flex-start;
+      }
+      .nav-links.active {
+        display: flex;
+      }
+      .dropdown-menu {
+        position: static;
+        transform: none;
+        opacity: 1;
+        visibility: visible;
+        background: transparent;
+        box-shadow: none;
+        border-top: none;
+        padding: 0.5rem 0 0.5rem 1rem;
+        min-width: auto;
+      }
+      .dropdown-menu a {
+        padding: 0.5rem 0;
+      }
+      .dropdown:hover .dropdown-menu {
+        transform: none;
+      }
+      .mobile-menu-btn {
+        display: block;
+      }
+      .trust-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .trust-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+      }
+      .trust-item:nth-child(3),
+      .trust-item:nth-child(4) {
+        border-bottom: none;
+      }
+      .cards-grid,
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, 250px);
+      }
+      .gallery-item:nth-child(1) {
+        grid-column: span 1;
+      }
+      .about-stats {
+        gap: 1.5rem;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+      }
+      .section {
+        padding: 4rem 0;
+      }
+      .hero-content {
+        margin-left: 4%;
+        margin-right: 4%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="public/images/logo.png" alt="Riverstone Excavating Ltd.">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <div class="dropdown">
+          <a href="services.html">
+            Services
+            <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="services.html#excavation">Excavation</a>
+            <a href="services.html#site-preparation">Site Preparation</a>
+            <a href="services.html#grading">Grading</a>
+            <a href="services.html#underground-utilities">Underground Utilities</a>
+            <a href="services.html#foundation-drainage">Foundation Drainage</a>
+            <a href="services.html#land-clearing">Land Clearing</a>
+            <a href="services.html#retaining-walls">Retaining Walls</a>
+            <a href="services.html#demolition">Demolition</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="projects.html">
+            Projects
+            <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="projects.html#residential">Residential</a>
+            <a href="projects.html#commercial">Commercial</a>
+            <a href="projects.html#civil">Civil</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#estimate" class="nav-cta">Get Free Estimate</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" id="home">
+    <div class="hero-bg">
+      <img src="public/images/hero-top.jpg" alt="Riverstone Excavating equipment at work in Langley, BC">
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">Excavation & Earthworks in Langley & the Fraser Valley</span>
+      <h1>Professional Excavation Done Right.</h1>
+      <p class="hero-subtitle">
+        From residential foundations to commercial site preparation, Riverstone Excavating provides dependable excavation, grading, underground utility installation, and earthworks throughout Langley and the Fraser Valley.
+      </p>
+      <div class="hero-buttons">
+        <a href="contact.html#estimate" class="btn btn-primary">Get Free Estimate</a>
+        <a href="projects.html" class="btn btn-outline">View Our Projects</a>
+      </div>
+    </div>
+    <a href="#why-choose" class="hero-scroll" onclick="event.preventDefault(); document.getElementById('why-choose').scrollIntoView({behavior:'smooth'})">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
+    </a>
+  </section>
+
+  <!-- Trust Credentials -->
+  <section class="trust-credentials" id="trust">
+    <div class="trust-credentials-grid">
+      <div class="trust-credential reveal">
+        <div class="trust-credential-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            <path d="M9 12l2 2 4-4"/>
+          </svg>
+        </div>
+        <h3>Safety Focused</h3>
+        <p>Committed to safe excavation practices on every project.</p>
+      </div>
+      <div class="trust-credential reveal reveal-delay-1">
+        <div class="trust-credential-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 17l6-6 4 4 8-10"/>
+            <path d="M14 8h7v7"/>
+          </svg>
+        </div>
+        <h3>Residential &amp; Commercial</h3>
+        <p>Professional excavation services for projects of all sizes.</p>
+      </div>
+      <div class="trust-credential reveal reveal-delay-2">
+        <div class="trust-credential-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+        </div>
+        <h3>Serving Langley &amp; Fraser Valley</h3>
+        <p>Proudly serving homeowners, builders, and developers throughout the region.</p>
+      </div>
+      <div class="trust-credential reveal reveal-delay-3">
+        <div class="trust-credential-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 11l3 3L22 4"/>
+            <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+          </svg>
+        </div>
+        <h3>Free Estimates</h3>
+        <p>Clear communication and honest estimates before work begins.</p>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- Services -->
+  <section class="section services" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Our Services</span>
+        <h2>Comprehensive Excavation Services</h2>
+<p>
+  From residential foundations to commercial developments, Riverstone Excavating delivers reliable excavation, grading, underground utilities, and site preparation backed by experienced operators, modern equipment, and a commitment to quality workmanship.
+</p>      </div>
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <img src="public/images/bobcat-skidsteer.jpg" alt="Site preparation and land clearing in Langley">
+          <div class="service-overlay">
+            <div class="service-line"></div>
+            <h3>Site Preparation</h3>
+            <p>Clearing, stripping, and rough grading to get your site ready for construction.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <img src="public/images/excavator-pond-hero.jpg" alt="Professional excavation services">
+          <div class="service-overlay">
+            <div class="service-line"></div>
+            <h3>Excavation</h3>
+            <p>Foundation digs, trenching, and precision excavation for residential and commercial projects.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <img src="public/images/grading.jpg" alt="Grading and road preparation">
+          <div class="service-overlay">
+            <div class="service-line"></div>
+            <h3>Grading</h3>
+            <p>Finish grading, road base preparation, and surface drainage shaping.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <img src="public/images/foundation-repair-5.jpg" alt="Underground utility installation">
+          <div class="service-overlay">
+            <div class="service-line"></div>
+            <h3>Underground Utilities</h3>
+            <p>Trenching and installation for sewer, water, storm, and service lines.</p>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <img src="public/images/foundation-repair-2.jpg" alt="Foundation drainage and waterproofing">
+          <div class="service-overlay">
+            <div class="service-line"></div>
+            <h3>Foundation Drainage</h3>
+            <p>Perimeter drainage, membrane installation, and water management around foundations.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-1">
+          <img src="public/images/excavators.jpg" alt="Land clearing and site development">
+          <div class="service-overlay">
+            <div class="service-line"></div>
+            <h3>Land Clearing</h3>
+            <p>Brush removal, stump grinding, and site clearing for new development.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-2">
+          <img src="public/images/roller.jpg" alt="Compaction and retaining wall preparation">
+          <div class="service-overlay">
+            <div class="service-line"></div>
+            <h3>Retaining Walls</h3>
+            <p>Excavation and backfill support for retaining wall construction.</p>
+          </div>
+        </div>
+        <div class="service-card reveal reveal-delay-3">
+          <img src="public/images/riverstone-excavator-title.jpg" alt="Demolition and site cleanup">
+          <div class="service-overlay">
+            <div class="service-line"></div>
+            <h3>Demolition</h3>
+            <p>Safe demolition of structures and site cleanup for redevelopment.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Project -->
+  <section class="section featured-project" id="featured-project">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Featured Project</span>
+        <h2>Lakeside Ranch Site Preparation</h2>
+        <p>A complete site development project showcasing our range of excavation and grading capabilities.</p>
+      </div>
+      <div class="featured-grid">
+        <div class="featured-image reveal">
+          <img src="public/images/excavators.jpg" alt="Lakeside ranch site preparation with multiple excavators">
+        </div>
+        <div class="featured-content reveal reveal-delay-2">
+          <h3>Multi-Phase Site Development</h3>
+          <p>
+            This rural property required extensive clearing, grading, drainage control, and road base preparation before construction could begin. We worked closely with the builder to coordinate each phase and keep the project on schedule.
+          </p>
+          <ul class="featured-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Land clearing and brush removal</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Rough and finish grading</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Drainage swales and erosion control</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+              </svg>
+              <span>Road base and compaction</span>
+            </li>
+          </ul>
+          <a href="projects.html" class="btn btn-primary">View More Projects</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Gallery -->
+  <section class="section project-gallery" id="project-gallery">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Project Gallery</span>
+        <h2>Recent Work</h2>
+        <p>A selection of projects from across Langley and the Fraser Valley.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-item reveal">
+          <img src="public/images/excavator-pond-hero.jpg" alt="Excavation near water feature">
+          <div class="gallery-caption">
+            <p>Pond and water feature excavation</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="public/images/bobcat-skidsteer.jpg" alt="Skid steer and excavator on residential site">
+          <div class="gallery-caption">
+            <p>Residential site preparation</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="public/images/grading.jpg" alt="Grading and gravel placement">
+          <div class="gallery-caption">
+            <p>Grading and base preparation</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal">
+          <img src="public/images/roller.jpg" alt="Compaction and road building">
+          <div class="gallery-caption">
+            <p>Road base compaction</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-1">
+          <img src="public/images/foundation-repair-2.jpg" alt="Foundation drainage installation">
+          <div class="gallery-caption">
+            <p>Foundation drainage and waterproofing</p>
+          </div>
+        </div>
+        <div class="gallery-item reveal reveal-delay-2">
+          <img src="public/images/riverstone-excavator-title.jpg" alt="Riverstone excavator branding">
+          <div class="gallery-caption">
+            <p>On-site excavation work</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section testimonials" id="testimonials">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Featured Testimonial</span>
+        <h2>What Our Clients Say</h2>
+      </div>
+      <div class="featured-testimonial reveal">
+        <div class="featured-testimonial-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+        </div>
+
+        <div class="featured-testimonial-stars" aria-label="5 star review">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+
+        <blockquote class="featured-testimonial-text">
+          "We've done business with Jeff of Riverstone Excavating twice in the past decade, and our experience was nothing short of outstanding both times. Professional, trustworthy, responsive, knowledgeable and an all-around fair, gracious and well presented guy—Jeff of Riverstone has earned our genuine and most wholehearted recommendation. He's terrific. Don't hesitate."
+        </blockquote>
+
+        <div class="featured-testimonial-author">
+          <h4>Gudrun G.</h4>
+          <span>Verified Customer</span>
+        </div>
+      </div>
+
+      <p class="testimonials-note reveal">More client success stories coming soon.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section faq" id="faq">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Common Questions</span>
+        <h2>Frequently Asked Questions</h2>
+        <p>Planning an excavation project comes with questions. Here are answers to some of the most common things homeowners, builders, and developers ask before getting started.</p>
+      </div>
+
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What happens if it rains during excavation?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer">
+              <p>Rain is a normal part of working in British Columbia. Our crew plans ahead by protecting excavation areas whenever necessary and adjusting work safely to minimize delays and protect your property.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>How do you prevent cave-ins?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer">
+              <p>Safety is our highest priority. For deeper excavations we use the appropriate protection methods—including trench boxes, shoring, sloping, or benching—while carefully evaluating soil conditions before work begins.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What happens if a utility line is damaged?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer">
+              <p>Although underground utilities are identified before excavation whenever possible, unexpected situations can occur. If a line is damaged, work stops immediately, the area is secured, and the appropriate utility provider is contacted so the issue can be handled safely.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Can you work around existing foundations?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer">
+              <p>Yes. Existing foundations often require extra care, especially if there are signs of cracking, settling, or high groundwater. We assess site conditions carefully and use the proper equipment and techniques to protect surrounding structures.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Should I notify my neighbours before excavation begins?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer">
+              <p>If your project is close to neighbouring properties, it's always a good idea to let them know work will be taking place. It helps avoid surprises and allows everyone to prepare for temporary noise or equipment activity.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What safety precautions do you take?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer">
+              <p>Every project is completed with safety in mind. Before excavation begins we assess the site, identify underground utilities, evaluate soil conditions, and follow safe excavation practices throughout the project.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>What equipment do you use?</span>
+            <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </button>
+          <div class="faq-answer-wrapper">
+            <div class="faq-answer">
+              <p>Our fleet includes excavators, skid steers, trenching equipment, dump trucks, and other specialized machinery. We choose the right equipment for each project to work efficiently while minimizing disruption to your property.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-footer reveal">
+        <p>Every project is different.</p>
+        <p>If you don't see your question here, we're happy to help. Contact us for straightforward advice and a free estimate.</p>
+        <a href="contact.html" class="btn btn-outline-dark">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="cta-bg">
+      <img src="public/images/excavators.jpg" alt="Riverstone Excavating heavy equipment">
+    </div>
+    <div class="cta-overlay"></div>
+    <div class="cta-content reveal">
+      <span class="section-eyebrow">Get Started</span>
+      <h2>Ready to break ground?</h2>
+      <p>Contact Riverstone Excavating today for a free estimate and let's discuss how we can help prepare your site for success.</p>
+      <a href="tel:604-795-0147" class="cta-phone">604-795-0147</a>
+      <a href="contact.html#estimate" class="btn btn-primary">Get Free Estimate</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="public/images/logo.png" alt="Riverstone Excavating Ltd.">
+          <p>Professional excavation contractor serving Langley and the Fraser Valley with dependable site preparation, grading, utilities, and earthworks.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <a href="about.html">About Us</a>
+          <a href="services.html">Services</a>
+          <a href="projects.html">Projects</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <a href="services.html#excavation">Excavation</a>
+          <a href="services.html#grading">Grading</a>
+          <a href="services.html#underground-utilities">Utilities</a>
+          <a href="services.html#foundation-drainage">Drainage</a>
+        </div>
+        <div class="footer-column footer-contact">
+          <h4>Contact</h4>
+          <p><a href="tel:604-795-0147">Phone: 604-795-0147</a></p>
+          <p><a href="mailto:info@riverstoneexcavating.ca">info@riverstoneexcavating.ca</a></p>
+          <p style="margin-top: 1rem; line-height: 1.6;">
+            Serving Langley, Abbotsford,<br>
+            Surrey, Aldergrove, and the<br>
+            Fraser Valley
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Riverstone Excavating Ltd. All rights reserved.</p>
+        <p>Licensed &bull; Insured &bull; WorkSafeBC Compliant</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileMenuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+      });
+    });
+
+    // Scroll reveal animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href !== '#') {
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
+      });
+    });
+    
+    // FAQ Accordion
+    document.querySelectorAll('.faq-question').forEach(button => {
+      button.addEventListener('click', () => {
+        const item = button.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+
+        // Close all items
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked item if it wasn't already open
+        if (!isOpen) {
+          item.classList.add('open');
+          button.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

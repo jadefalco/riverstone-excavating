@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en-CA">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Riverstone Excavating</title>
+  <meta name="description" content="View Riverstone Excavating's portfolio of residential, commercial, and civil excavation projects across Langley and the Fraser Valley.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --charcoal: #1a1a1a;
+      --steel: #4a5568;
+      --steel-light: #6b7280;
+      --warm-white: #fafafa;
+      --concrete: #f0f0f0;
+      --orange-dark: #c75a12;
+      --orange-light: #f08c4a;
+      --orange: #e87722;
+      --orange-subtle: #f5d9c5;
+      --white: #ffffff;
+      --transition: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--charcoal);
+      background: var(--warm-white);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    /* Navigation */
+    .navbar {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      padding: 1.25rem 0; transition: all 0.4s var(--transition);
+    }
+    .navbar.scrolled {
+      background: rgba(26, 26, 26, 0.95); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      padding: 0.75rem 0; box-shadow: 0 4px 30px rgba(0,0,0,0.15);
+    }
+    .navbar.scrolled .nav-logo img { height: 55px; }
+    .nav-container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; }
+    .nav-logo { display: flex; align-items: center; gap: 0.75rem; }
+    .nav-logo img { height: 80px; width: auto; background: var(--white); padding: 4px 10px; border-radius: 2px; transition: all 0.4s ease; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links > a, .dropdown > a {
+      font-size: 0.85rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase;
+      color: rgba(255,255,255,0.85); transition: color 0.3s ease; position: relative;
+      display: inline-flex; align-items: center; gap: 0.35rem;
+    }
+    .nav-links > a::after, .dropdown > a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: var(--orange); transition: width 0.3s var(--transition);
+    }
+    .nav-links > a:hover, .dropdown > a:hover { color: var(--white); }
+    .nav-links > a:hover::after, .dropdown > a:hover::after { width: 100%; }
+    .dropdown { position: relative; }
+    .dropdown-menu {
+      position: absolute; top: calc(100% + 1rem); left: 50%;
+      transform: translateX(-50%) translateY(10px);
+      background: rgba(26, 26, 26, 0.98); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      min-width: 240px; padding: 0.75rem 0; border-radius: 2px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25); opacity: 0; visibility: hidden;
+      transition: all 0.3s var(--transition); border-top: 2px solid var(--orange);
+    }
+    .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+    .dropdown-menu a {
+      display: block; padding: 0.7rem 1.5rem; font-size: 0.85rem; font-weight: 500;
+      color: rgba(255,255,255,0.8); transition: all 0.2s ease; text-transform: none; letter-spacing: 0.01em;
+    }
+    .dropdown-menu a:hover { color: var(--white); background: rgba(232, 119, 34, 0.12); padding-left: 1.75rem; }
+    .dropdown-arrow { width: 10px; height: 10px; transition: transform 0.3s ease; }
+    .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+    .nav-cta {
+      background: var(--orange); color: var(--white) !important; padding: 0.6rem 1.5rem;
+      border-radius: 2px; font-weight: 600; transition: all 0.3s ease;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--orange-dark); transform: translateY(-1px); }
+    .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+    .mobile-menu-btn span { display: block; width: 24px; height: 2px; background: var(--white); margin: 5px 0; transition: 0.3s ease; }
+
+    /* Page Hero */
+    .page-hero {
+      position: relative; height: 55vh; min-height: 450px; display: flex;
+      align-items: center; justify-content: center; overflow: hidden;
+    }
+    .page-hero-bg { position: absolute; inset: 0; z-index: 1; }
+    .page-hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.6); }
+    .page-hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(26,26,26,0.85) 0%, rgba(26,26,26,0.6) 100%);
+      z-index: 2;
+    }
+    .page-hero-content { position: relative; z-index: 3; text-align: center; max-width: 800px; padding: 0 2rem; padding-top: 80px; }
+    .section-eyebrow {
+      display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--orange); margin-bottom: 1rem;
+    }
+    .page-hero-content h1 { font-size: clamp(2.5rem, 6vw, 4rem); color: var(--white); margin-bottom: 1rem; }
+    .page-hero-content p { font-size: 1.15rem; color: rgba(255,255,255,0.8); line-height: 1.7; }
+
+    /* Content */
+    .section { padding: 6rem 0; }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    .placeholder-section { background: var(--white); }
+    .placeholder-content { max-width: 800px; margin: 0 auto; text-align: center; }
+    .placeholder-content h2 { font-size: clamp(1.75rem, 3vw, 2.5rem); margin-bottom: 1.5rem; color: var(--charcoal); }
+    .placeholder-content p { color: var(--steel); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; }
+    .project-categories {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem;
+      text-align: left; margin-bottom: 2rem;
+    }
+    .project-category {
+      background: var(--warm-white); padding: 2rem; border-radius: 2px;
+      border-top: 3px solid var(--orange); transition: all 0.3s ease;
+    }
+    .project-category:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
+    .project-category h3 { font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--charcoal); }
+    .project-category p { color: var(--steel); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2.25rem;
+      font-size: 0.9rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+      border-radius: 2px; transition: all 0.3s var(--transition); cursor: pointer;
+      border: none; font-family: 'Inter', sans-serif;
+    }
+    .btn-primary { background: var(--orange); color: var(--white); }
+    .btn-primary:hover { background: var(--orange-dark); transform: translateY(-2px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+    /* Footer */
+    .footer { background: var(--charcoal); color: var(--white); padding: 4rem 0 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; margin-bottom: 3rem; }
+    .footer-brand img { height: 56px; width: auto; background: var(--white); padding: 6px 12px; border-radius: 2px; margin-bottom: 1rem; }
+    .footer-brand p { color: var(--steel-light); font-size: 0.9rem; line-height: 1.7; max-width: 300px; }
+    .footer-column h4 { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); margin-bottom: 1.5rem; }
+    .footer-column a { display: block; color: var(--steel-light); font-size: 0.9rem; margin-bottom: 0.75rem; transition: color 0.3s ease; }
+    .footer-column a:hover { color: var(--orange); }
+    .footer-contact p { color: var(--steel-light); font-size: 0.9rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem; }
+    .footer-contact a { color: var(--steel-light); transition: color 0.3s ease; }
+    .footer-contact a:hover { color: var(--orange); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .footer-bottom p { font-size: 0.8rem; color: var(--steel); }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .project-categories { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none; position: absolute; top: 100%; left: 0; width: 100%;
+        background: rgba(26,26,26,0.98); flex-direction: column; padding: 2rem;
+        gap: 1rem; backdrop-filter: blur(10px); align-items: flex-start;
+      }
+      .nav-links.active { display: flex; }
+      .dropdown-menu {
+        position: static; transform: none; opacity: 1; visibility: visible;
+        background: transparent; box-shadow: none; border-top: none;
+        padding: 0.5rem 0 0.5rem 1rem; min-width: auto;
+      }
+      .dropdown-menu a { padding: 0.5rem 0; }
+      .dropdown:hover .dropdown-menu { transform: none; }
+      .mobile-menu-btn { display: block; }
+      .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .section { padding: 4rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="index.html" class="nav-logo">
+        <img src="public/images/logo.png" alt="Riverstone Excavating Ltd.">
+      </a>
+      <div class="nav-links" id="navLinks">
+        <div class="dropdown">
+          <a href="services.html">
+            Services
+            <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="services.html#excavation">Excavation</a>
+            <a href="services.html#site-preparation">Site Preparation</a>
+            <a href="services.html#grading">Grading</a>
+            <a href="services.html#underground-utilities">Underground Utilities</a>
+            <a href="services.html#foundation-drainage">Foundation Drainage</a>
+            <a href="services.html#land-clearing">Land Clearing</a>
+            <a href="services.html#retaining-walls">Retaining Walls</a>
+            <a href="services.html#demolition">Demolition</a>
+          </div>
+        </div>
+        <div class="dropdown">
+          <a href="projects.html">
+            Projects
+            <svg class="dropdown-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </a>
+          <div class="dropdown-menu">
+            <a href="projects.html#residential">Residential</a>
+            <a href="projects.html#commercial">Commercial</a>
+            <a href="projects.html#civil">Civil</a>
+          </div>
+        </div>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="contact.html#estimate" class="nav-cta">Get Free Estimate</a>
+      </div>
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-bg">
+      <img src="public/images/excavators.jpg" alt="Riverstone Excavating project gallery">
+    </div>
+    <div class="page-hero-overlay"></div>
+    <div class="page-hero-content">
+      <span class="section-eyebrow">Our Work</span>
+      <h1>Projects Across the Fraser Valley</h1>
+      <p>A selection of residential, commercial, and civil excavation and site preparation projects.</p>
+    </div>
+  </section>
+
+  <section class="section placeholder-section">
+    <div class="container">
+      <div class="placeholder-content">
+        <h2>Full Project Gallery Coming Soon</h2>
+        <p>We are currently organizing our project portfolio with detailed case studies, before-and-after photos, and project highlights from across Langley and the Fraser Valley.</p>
+        <div class="project-categories">
+          <div class="project-category">
+            <h3>Residential</h3>
+            <p>Foundation excavations, site prep for custom homes, drainage systems, and acreage development.</p>
+          </div>
+          <div class="project-category">
+            <h3>Commercial</h3>
+            <p>Site clearing, grading, underground utilities, and road base preparation for commercial developments.</p>
+          </div>
+          <div class="project-category">
+            <h3>Civil</h3>
+            <p>Road building, stormwater management, trenching, and municipal earthworks projects.</p>
+          </div>
+        </div>
+        <a href="contact.html#estimate" class="btn btn-primary">Start Your Project</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="public/images/logo.png" alt="Riverstone Excavating Ltd.">
+          <p>Professional excavation contractor serving Langley and the Fraser Valley with dependable site preparation, grading, utilities, and earthworks.</p>
+        </div>
+        <div class="footer-column">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="about.html">About</a>
+          <a href="services.html">Services</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-column">
+          <h4>Services</h4>
+          <a href="services.html#excavation">Excavation</a>
+          <a href="services.html#grading">Grading</a>
+          <a href="services.html#underground-utilities">Utilities</a>
+          <a href="services.html#foundation-drainage">Drainage</a>
+        </div>
+        <div class="footer-column footer-contact">
+          <h4>Contact</h4>
+          <p><a href="tel:604-555-0123">Phone: 604-555-0123</a></p>
+          <p><a href="mailto:info@riverstoneexcavating.ca">info@riverstoneexcavating.ca</a></p>
+          <p style="margin-top: 1rem; line-height: 1.6;">Serving Langley, Abbotsford,<br>Surrey, Aldergrove, and the<br>Fraser Valley</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Riverstone Excavating Ltd. All rights reserved.</p>
+        <p>Licensed &bull; Insured &bull; WorkSafeBC Compliant</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    });
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const navLinks = document.getElementById('navLinks');
+    mobileMenuBtn.addEventListener('click', () => navLinks.classList.toggle('active'));
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => navLinks.classList.remove('active'));
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Lakefront Estate Foundation | Okanagan Earthworks</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+
+<script>
+tailwind.config = {
+    theme: {
+        extend: {
+            colors: {
+                forest: '#1C2B24',
+                gold: '#C4B59D',
+                cream: '#F5F3EF',
+                charcoal: '#2C2C2C'
+            },
+            fontFamily: {
+                serif: ['Playfair Display', 'serif'],
+                sans: ['Inter', 'sans-serif']
+            }
+        }
+    }
+}
+</script>
+
+<style>
+
+body {
+    font-family: 'Inter', sans-serif;
+    color: #2C2C2C;
+}
+
+h1,h2,h3 {
+    font-family: 'Playfair Display', serif;
+}
+
+.section-title {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+}
+
+.fade-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 1s cubic-bezier(0.16,1,0.3,1),
+        transform 1s cubic-bezier(0.16,1,0.3,1);
+}
+
+.fade-up.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.gallery-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 28px;
+    contain: layout paint;
+    isolation: isolate;
+}
+
+.gallery-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    transition: transform 1.2s cubic-bezier(0.16,1,0.3,1);
+}
+
+.gallery-img-fill {
+    position: absolute;
+    inset: -4px;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    object-fit: cover;
+    display: block;
+}
+
+.gallery-image:hover img {
+    transform: scale(1.04);
+}
+
+.section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+}
+
+@media (min-width: 1024px) {
+    .section-spacing {
+        padding-top: 7rem;
+        padding-bottom: 7rem;
+    }
+}
+
+#logo-img {
+    transition: filter 0.35s ease;
+    will-change: filter;
+    filter: brightness(0) invert(1);
+}
+
+#navbar.scrolled .hamburger span {
+    background: #1C2B24;
+}
+
+.hamburger span {
+    background: white;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+    transform: translateX(-10px);
+}
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
+#navbar.scrolled .hamburger span {
+    background: #1C2B24;
+}
+
+#navbar {
+    background: transparent;
+}
+
+#navbar.scrolled {
+    background: rgba(255,255,255,0.96);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    backdrop-filter: blur(14px);
+}
+
+.menu-overlay {
+    right: 0;
+    left: auto;
+    width: 25vw;
+    min-width: 320px;
+    max-width: 420px;
+    background: rgba(28, 43, 36, 0.9);
+    padding: 3rem 2rem;
+}
+
+@media (max-width: 640px) {
+    .menu-overlay {
+        width: 100%;
+        min-width: auto;
+    }
+}
+
+.menu-overlay.hidden-menu {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.menu-overlay.visible-menu {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+
+
+</style>
+</head>
+
+<body class="bg-white">
+
+<header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-out">    <div class="w-full px-6 lg:px-12 py-6 flex items-center justify-between">
+        <a href="../index.html" class="block">
+            <img id="logo-img" data-company-src="logo.src" data-company-alt="logo.alt" src="../images/logo.png" alt="Okanagan Earthworks Logo" class="h-12 lg:h-16 w-auto">
+        </a>
+
+        <button id="menu-toggle" class="hamburger relative w-8 h-6 flex flex-col justify-between items-end z-50 group cursor-pointer">
+            <span class="block w-full h-0.5 transition-colors duration-300"></span>
+            <span class="block w-full h-0.5 transition-colors duration-300"></span>
+            <span class="block w-full h-0.5 transition-colors duration-300"></span>
+        </button>
+    </div>
+</header>
+
+<div id="menu-overlay" class="menu-overlay hidden-menu fixed top-0 right-0 bottom-0 z-40 bg-forest flex items-center justify-center">
+    <nav class="text-center">
+        <ul class="space-y-8">
+            <li class="menu-item">
+                <a href="../index.html" class="font-serif text-2xl lg:text-4xl text-white hover:text-gold transition-colors duration-300" onclick="closeMenu()">Home</a>
+            </li>
+            <li class="menu-item">
+                <a href="../about.html" class="font-serif text-2xl lg:text-4xl text-white hover:text-gold transition-colors duration-300" onclick="closeMenu()">About</a>
+            </li>
+            <li class="menu-item">
+                <a href="../index.html#projects" class="font-serif text-2xl lg:text-4xl text-white hover:text-gold transition-colors duration-300" onclick="closeMenu()">Projects</a>
+            </li>
+            <li class="menu-item">
+                <a href="../index.html#contact" class="font-serif text-2xl lg:text-4xl text-white hover:text-gold transition-colors duration-300" onclick="closeMenu()">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+
+<!-- HERO -->
+
+<section id="hero-section" class="relative h-screen overflow-hidden">
+
+    <img
+    data-company-src="project_pages.lakefront_estate.hero.src"
+    data-company-alt="project_pages.lakefront_estate.hero.alt"
+    src="../images/excavation/project-foundation.jpg"
+    class="absolute inset-0 w-full h-full object-cover object-top"
+>
+
+    <div class="absolute inset-0 bg-gradient-to-b from-black/35 via-black/10 to-black/30"></div>
+
+<div class="relative z-10 h-full flex items-end justify-center text-center px-6 pb-16 lg:pb-20">
+        <div class="max-w-4xl">
+
+            <p class="text-white/70 uppercase tracking-[0.3em] text-sm mb-6">
+                Featured Project
+            </p>
+
+            <h1 class="text-white text-6xl lg:text-8xl font-medium leading-none mb-8">
+                Lakefront Estate<br>Foundation
+            </h1>
+
+            <p class="text-white/75 text-lg lg:text-[1.35rem] font-light leading-relaxed max-w-2xl mx-auto">
+    A precision foundation excavation on a steep Okanagan lakeside lot, including rock breaking and drainage integration. </p>
+        </div>
+
+    </div>
+
+</section>
+<!-- PROJECT DETAILS -->
+
+<section class="py-24 bg-white">
+
+    <div class="max-w-6xl mx-auto px-6">
+
+        <div class="grid md:grid-cols-4 gap-12">
+
+            <div>
+                <p class="text-gold uppercase tracking-[0.3em] text-xs mb-3">
+                    Location
+                </p>
+                <p class="text-charcoal/70 text-base leading-relaxed font-light">
+                    Okanagan Lake
+                </p>
+            </div>
+
+            <div>
+                <p class="text-gold uppercase tracking-[0.3em] text-xs mb-3">
+                    Scope
+                </p>
+                <p class="text-charcoal/70 text-base leading-relaxed font-light">
+                    Foundation Excavation & Rock Work
+                </p>
+            </div>
+
+            <div>
+                <p class="text-gold uppercase tracking-[0.3em] text-xs mb-3">
+                    Features
+                </p>
+                <p class="text-charcoal/70 text-base leading-relaxed font-light">
+                    Rock breaking, footing excavation, perimeter drainage
+                </p>
+            </div>
+
+            <div>
+                <p class="text-gold uppercase tracking-[0.3em] text-xs mb-3">
+                    Equipment
+                </p>
+                <p class="text-charcoal/70 text-base leading-relaxed font-light">
+                    Excavator with Hydraulic Hammer
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- INTRO -->
+
+<section class="section-spacing">
+
+    <div class="max-w-5xl mx-auto px-6">
+
+        <div class="grid lg:grid-cols-2 gap-16 items-start">
+
+            <div class="fade-up">
+
+                <p class="text-gold uppercase tracking-[0.3em] text-xs mb-6">
+                    Project Overview
+                </p>
+
+                <h2 class="section-title text-forest">
+                    Precision excavation on a challenging lakeside slope.
+                </h2>
+
+            </div>
+
+            <div class="fade-up">
+
+                <div class="space-y-6 text-lg text-charcoal/70 font-light leading-relaxed">
+
+                    <p>
+                        Set into a hillside above Okanagan Lake, this custom estate required exacting foundation cuts through compact soil and bedrock.
+                    </p>
+
+                    <p>
+                        We excavated full-height basement walls, installed footing trenches, and integrated a perimeter drainage system to manage groundwater on the slope.
+                    </p>
+
+                    <p>
+                        Rock-breaking was required along the lake-facing wall, where bedrock sat just below grade. The result was a clean, accurately dimensioned foundation ready for formwork.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- EXCAVATION -->
+
+<section class="py-20 lg:py-28 bg-[#F8F6F2]">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-3xl mb-16 fade-up">
+
+            <p class="text-gold uppercase tracking-[0.3em] text-xs mb-4">
+                Foundation Cut
+            </p>
+
+            <h2 class="section-title text-forest mb-6">
+    Clean walls and accurate depths for a complex foundation.            </h2>
+
+            <p class="text-charcoal/60 text-lg font-light leading-relaxed">
+                Tight dimensional tolerances and careful benching allowed the foundation crew to set forms directly against our cuts.
+            </p>
+
+        </div>
+
+        <!-- FEATURE IMAGE -->
+
+        <div class="fade-up mb-8">
+            <div class="gallery-image h-[320px] md:h-[500px] lg:h-[700px]">
+                <img
+                    data-company-src="project_pages.lakefront_estate.foundation_cut.feature.src"
+                    data-company-alt="project_pages.lakefront_estate.foundation_cut.feature.alt"
+                    src="../images/excavation/detail-foundation.jpg"
+                    alt="Foundation excavation"
+                    class="gallery-img-fill"
+                >
+            </div>
+        </div>
+
+        <!-- SUPPORTING IMAGES -->
+
+        <div class="grid lg:grid-cols-2 gap-8 mb-6 lg:mb-8">
+
+            <div class="fade-up">
+                <div class="gallery-image">
+                    <img
+                        data-company-src="project_pages.lakefront_estate.foundation_cut.supporting.0.src"
+                        data-company-alt="project_pages.lakefront_estate.foundation_cut.supporting.0.alt"
+                        src="../images/excavation/detail-excavator-1.jpg"
+                        alt="Excavator at work"
+                    >
+                </div>
+            </div>
+
+            <div class="fade-up">
+                <div class="gallery-image">
+                    <img
+                        data-company-src="project_pages.lakefront_estate.foundation_cut.supporting.1.src"
+                        data-company-alt="project_pages.lakefront_estate.foundation_cut.supporting.1.alt"
+                        src="../images/excavation/equipment-loader.jpg"
+                        alt="Loader on site"
+                    >
+                </div>
+            </div>
+
+        </div>
+
+        <p class="max-w-2xl text-sm text-charcoal/50 font-light leading-relaxed">
+            Excavated walls were within tolerance and free of loose material, allowing the forming crew to proceed immediately.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- ROCK BREAKING -->
+
+<section class="py-24 lg:py-36">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-3xl mb-16 lg:mb-20 fade-up">
+
+            <p class="text-gold uppercase tracking-[0.3em] text-xs mb-4">
+                Rock Breaking
+            </p>
+
+            <h2 class="section-title text-forest mb-6">
+                Power through bedrock without compromising the site.
+            </h2>
+
+            <p class="text-charcoal/60 text-lg font-light leading-relaxed">
+                A hydraulic hammer attachment broke through exposed bedrock along the foundation perimeter, creating clean lines and proper footing bearing.
+            </p>
+
+        </div>
+
+        <!-- EDITORIAL GALLERY -->
+
+        <div class="grid lg:grid-cols-12 gap-8">
+
+            <!-- TALL LEFT IMAGE -->
+            <div class="lg:col-span-7">
+                <div class="fade-up h-[320px] md:h-[500px] lg:h-[700px]">
+                    <div class="gallery-image h-full">
+                        <img
+                            data-company-src="project_pages.lakefront_estate.rock_breaking.tall_left.src"
+                            data-company-alt="project_pages.lakefront_estate.rock_breaking.tall_left.alt"
+                            src="../images/excavation/project-land-clearing.jpg"
+                            alt="Rocky excavation site"
+                            class="gallery-img-fill"
+                        >
+                    </div>
+                </div>
+            </div>
+
+            <!-- STACKED RIGHT IMAGE -->
+            <div class="lg:col-span-5 flex flex-col justify-start">
+                <div class="fade-up h-[320px] md:h-[500px] lg:h-[700px]">
+                    <div class="gallery-image h-full">
+                        <img
+                            data-company-src="project_pages.lakefront_estate.rock_breaking.stacked_right.src"
+                            data-company-alt="project_pages.lakefront_estate.rock_breaking.stacked_right.alt"
+                            src="../images/excavation/detail-excavator-2.jpg"
+                            alt="Excavator detail"
+                            class="gallery-img-fill"
+                        >
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- DRAINAGE -->
+
+<section class="py-20 lg:py-28 bg-[#F8F6F2]">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-3xl mb-16 fade-up">
+
+            <p class="text-gold uppercase tracking-[0.3em] text-xs mb-4">
+                Drainage
+            </p>
+
+            <h2 class="section-title text-forest mb-6">
+                Integrated water management for a lakeside slope.
+            </h2>
+
+            <p class="text-charcoal/60 text-lg font-light leading-relaxed">
+                Perimeter drainage and strategic grading direct water away from the foundation and toward approved discharge points.
+            </p>
+
+        </div>
+
+        <!-- FEATURE IMAGE -->
+
+        <div class="fade-up mb-8">
+            <div class="gallery-image h-[320px] md:h-[500px] lg:h-[700px]">
+                <img
+                    data-company-src="project_pages.lakefront_estate.drainage.feature.src"
+                    data-company-alt="project_pages.lakefront_estate.drainage.feature.alt"
+                    src="../images/excavation/equipment-bulldozer.jpg"
+                    alt="Bulldozer grading drainage slope"
+                    class="gallery-img-fill"
+                >
+            </div>
+        </div>
+
+        <!-- SUPPORTING IMAGES -->
+
+        <div class="grid lg:grid-cols-2 gap-8 mb-6 lg:mb-8">
+
+            <div class="fade-up">
+                <div class="gallery-image">
+                    <img
+                        data-company-src="project_pages.lakefront_estate.drainage.supporting.0.src"
+                        data-company-alt="project_pages.lakefront_estate.drainage.supporting.0.alt"
+                        src="../images/excavation/equipment-loader.jpg"
+                        alt="Loader finishing grade"
+                    >
+                </div>
+            </div>
+
+            <div class="fade-up">
+                <div class="gallery-image">
+                    <img
+                        data-company-src="project_pages.lakefront_estate.drainage.supporting.1.src"
+                        data-company-alt="project_pages.lakefront_estate.drainage.supporting.1.alt"
+                        src="../images/excavation/detail-excavator-1.jpg"
+                        alt="Excavator on graded site"
+                    >
+                </div>
+            </div>
+
+        </div>
+
+        <p class="max-w-2xl text-sm text-charcoal/50 font-light leading-relaxed">
+            Final grades protect the foundation while maintaining the natural drainage patterns of the hillside.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- CINEMATIC BREAK -->
+
+<section class="relative overflow-hidden" style="height: 80vh;">
+
+    <img
+        data-company-src="project_pages.lakefront_estate.cinematic.src"
+        data-company-alt="project_pages.lakefront_estate.cinematic.alt"
+        src="../images/excavation/hero-excavators.jpg"
+        class="absolute inset-0 w-full h-full object-cover"
+    >
+
+    <div class="absolute inset-0 bg-black/20"></div>
+
+</section>
+
+
+<!-- RESULT -->
+
+<section class="section-spacing">
+
+    <div class="max-w-7xl mx-auto px-6">
+
+        <div class="max-w-3xl mb-16 fade-up">
+
+            <p class="text-gold uppercase tracking-[0.3em] text-xs mb-4">
+                The Result
+            </p>
+
+            <h2 class="section-title text-forest mb-6">
+                A foundation ready for formwork.
+            </h2>
+
+            <p class="text-charcoal/60 text-lg font-light leading-relaxed">
+                The site was delivered with clean excavation lines, rock removed to bearing, and drainage installed — allowing the builder to move directly into forming and concrete placement.
+            </p>
+
+        </div>
+
+        <div class="fade-up mb-8">
+            <div class="gallery-image h-[320px] md:h-[500px] lg:h-[700px]">
+                <img
+                    data-company-src="project_pages.lakefront_estate.result.src"
+                    data-company-alt="project_pages.lakefront_estate.result.alt"
+                    src="../images/excavation/project-foundation.jpg"
+                    alt="Completed foundation excavation"
+                    class="gallery-img-fill"
+                >
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="py-20 lg:py-32 bg-forest text-white text-center">
+
+    <div class="max-w-3xl mx-auto px-6">
+
+        <p data-company="cta.eyebrow" class="text-gold uppercase tracking-[0.3em] text-xs mb-6">
+            Start Your Project
+        </p>
+
+        <h2 data-company="cta.headline" class="text-5xl lg:text-6xl font-medium leading-tight mb-8">
+            Need a site prepared for your next build?
+        </h2>
+
+        <p data-company="cta.text" class="text-white/70 text-lg font-light leading-relaxed mb-12">
+            We specialize in excavation, land clearing, and site preparation that set your project up for success.
+        </p>
+
+        <a
+            href="../index.html#contact"
+            data-company="cta.button_text"
+            class="inline-block border border-white px-10 py-5 uppercase tracking-[0.2em] text-xs hover:bg-white hover:text-forest transition-all duration-500"
+        >
+            Contact Us
+        </a>
+
+    </div>
+
+</section>
+
+<script>
+
+/* REVEAL */
+
+const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(entry => {
+
+        if(entry.isIntersecting){
+            entry.target.classList.add('active');
+        }
+
+    });
+
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-up').forEach(el => {
+    observer.observe(el);
+});
+
+const menuToggle = document.getElementById('menu-toggle');
+const menuOverlay = document.getElementById('menu-overlay');
+const hamburgerLines = Array.from(document.querySelectorAll('.hamburger span'));
+const navbar = document.getElementById('navbar');
+
+function openMenu() {
+    menuOverlay.classList.remove('hidden-menu');
+    menuOverlay.classList.add('visible-menu');
+    menuToggle.classList.add('active');
+    const color = navbar.classList.contains('scrolled') ? '#1C2B24' : 'white';
+    hamburgerLines.forEach(line => line.style.backgroundColor = color);
+}
+
+function closeMenu() {
+    menuOverlay.classList.remove('visible-menu');
+    menuOverlay.classList.add('hidden-menu');
+    menuToggle.classList.remove('active');
+    updateHeaderColor();
+}
+
+menuToggle.addEventListener('click', () => {
+    if (menuOverlay.classList.contains('hidden-menu')) {
+        openMenu();
+    } else {
+        closeMenu();
+    }
+});
+
+function updateHeaderColor() {
+
+    const hero = document.getElementById('hero-section');
+
+    if (!hero) return;
+
+    const passedHero = window.scrollY > (hero.offsetHeight - 120);
+
+    if (passedHero) {
+
+        navbar.classList.add('scrolled');
+
+    } else {
+
+        navbar.classList.remove('scrolled');
+
+    }
+
+    // LOGO COLOR
+const logo = document.getElementById('logo-img');
+
+if (passedHero) {
+
+    logo.style.filter = 'brightness(0)';
+
+} else {
+
+    logo.style.filter = 'brightness(0) invert(1)';
+
+}
+
+    // HAMBURGER COLOR
+    if (!menuOverlay.classList.contains('visible-menu')) {
+
+        hamburgerLines.forEach(line => {
+
+            line.style.backgroundColor = passedHero
+                ? '#1C2B24'
+                : 'white';
+
+        });
+
+    }
+}
+
+window.addEventListener('scroll', updateHeaderColor, { passive: true });
+window.addEventListener('load', updateHeaderColor);
+
+</script>
+
+<script src="../assets/js/company-loader.js"></script>
+
+</body>
+</html>
